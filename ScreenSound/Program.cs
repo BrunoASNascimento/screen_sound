@@ -73,9 +73,13 @@ void ShowAllBands()
 {
     Console.Clear();
     Console.WriteLine("Bands list");
-    for (int i = 0; i < bands.Count; i++)
+    //for (int i = 0; i < bands.Count; i++)
+    //{
+    //    Console.WriteLine($"Band: {bands[i]}");
+    //}
+    foreach (string band in bands)
     {
-        Console.WriteLine($"Band: {bands[i]}");
+        Console.WriteLine($"Band: {band}");
     }
     Console.WriteLine("Press any key to continue...");
     Console.ReadKey();
