@@ -1,6 +1,8 @@
 ﻿// Screen Sound
 
 string messageWelcome = "Welcome to the Screen Sound!";
+//List<string> bands = new List<string>();
+List<string> bands = new List<string> { "U2", "Kiss", "Ozzy" };
 
 void ShowMessageWelcome()
 {
@@ -18,6 +20,7 @@ void ShowMessageWelcome()
 
 void ShowMenuOptions()
 {
+    ShowMessageWelcome();
     Console.WriteLine("1 - Register Band");
     Console.WriteLine("2 - List Bands");
     Console.WriteLine("3 - Evaluate Band");
@@ -31,10 +34,11 @@ void ShowMenuOptions()
     switch (optionSelectedInt)
     {
         case 1:
-            Console.WriteLine("Você selecionou a opção:" + optionSelected);
+            RegisterBand();
+
             break;
         case 2:
-            Console.WriteLine("Você selecionou a opção:" + optionSelected);
+            ShowAllBands();
             break;
         case 3:
             Console.WriteLine("Você selecionou a opção:" + optionSelected);
@@ -52,5 +56,31 @@ void ShowMenuOptions()
 
 }
 
-ShowMessageWelcome();
+void RegisterBand()
+{
+    Console.Clear();
+    Console.WriteLine("Register Band");
+    Console.Write("Write the name of band:");
+    string bandName = Console.ReadLine()!;
+    bands.Add(bandName);
+    Console.Write($"The band {bandName} was registered");
+    Thread.Sleep(2000);
+    Console.Clear();
+    ShowMenuOptions();
+}
+
+void ShowAllBands()
+{
+    Console.Clear();
+    Console.WriteLine("Bands list");
+    for (int i = 0; i < bands.Count; i++)
+    {
+        Console.WriteLine($"Band: {bands[i]}");
+    }
+    Console.WriteLine("Press any key to continue...");
+    Console.ReadKey();
+    Console.Clear();
+    ShowMenuOptions();
+}
+
 ShowMenuOptions();
