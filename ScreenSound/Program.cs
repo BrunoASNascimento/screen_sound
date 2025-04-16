@@ -58,8 +58,7 @@ void ShowMenuOptions()
 
 void RegisterBand()
 {
-    Console.Clear();
-    Console.WriteLine("Register Band");
+    ShowTitle("Register Band");
     Console.Write("Write the name of band:");
     string bandName = Console.ReadLine()!;
     bands.Add(bandName);
@@ -71,8 +70,7 @@ void RegisterBand()
 
 void ShowAllBands()
 {
-    Console.Clear();
-    Console.WriteLine("Bands list");
+    ShowTitle("Bands list");
     //for (int i = 0; i < bands.Count; i++)
     //{
     //    Console.WriteLine($"Band: {bands[i]}");
@@ -85,6 +83,22 @@ void ShowAllBands()
     Console.ReadKey();
     Console.Clear();
     ShowMenuOptions();
+}
+
+void ShowTitle(string title)
+{
+    int sizeOfTitle = title.Length;
+    string detailTitle = string.Empty.PadLeft(sizeOfTitle, '*');
+    
+    
+    Console.Clear();
+    Console.WriteLine(detailTitle);
+    Console.WriteLine(title);
+    Console.WriteLine(detailTitle);
+    Console.WriteLine();
+}
+{
+    
 }
 
 ShowMenuOptions();
