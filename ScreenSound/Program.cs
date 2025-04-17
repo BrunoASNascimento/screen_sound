@@ -2,7 +2,14 @@
 
 string messageWelcome = "Welcome to the Screen Sound!";
 //List<string> bands = new List<string>();
-List<string> bands = new List<string> { "U2", "Kiss", "Ozzy" };
+// List<string> bands = new List<string> { "U2", "Kiss", "Ozzy" };
+
+Dictionary<string, List<int>> bands = new Dictionary<string, List<int>>(StringComparer.InvariantCultureIgnoreCase)
+{
+    { "U2", new List<int>() { 10, 9, 8 } },
+    { "Kiss", new List<int>() },
+    { "Ozzy", new List<int>() { 10, 10, 10, 8, 9 } }
+};
 
 void ShowMessageWelcome()
 {
@@ -41,7 +48,7 @@ void ShowMenuOptions()
             ShowAllBands();
             break;
         case 3:
-            Console.WriteLine("Você selecionou a opção:" + optionSelected);
+            EvaluateBand();
             break;
         case 4:
             Console.WriteLine("Você selecionou a opção:" + optionSelected);
@@ -53,7 +60,6 @@ void ShowMenuOptions()
             Console.WriteLine("Opção inválida.");
             break;
     }
-
 }
 
 void RegisterBand()
@@ -61,7 +67,13 @@ void RegisterBand()
     ShowTitle("Register Band");
     Console.Write("Write the name of band:");
     string bandName = Console.ReadLine()!;
-    bands.Add(bandName);
+
+
+    if (!bands.ContainsKey(bandName))
+    {
+        bands.Add(bandName, new List<int>());
+    }
+
     Console.Write($"The band {bandName} was registered");
     Thread.Sleep(2000);
     Console.Clear();
@@ -75,10 +87,11 @@ void ShowAllBands()
     //{
     //    Console.WriteLine($"Band: {bands[i]}");
     //}
-    foreach (string band in bands)
+    foreach (string band in bands.Keys)
     {
         Console.WriteLine($"Band: {band}");
     }
+
     Console.WriteLine("Press any key to continue...");
     Console.ReadKey();
     Console.Clear();
@@ -89,16 +102,17 @@ void ShowTitle(string title)
 {
     int sizeOfTitle = title.Length;
     string detailTitle = string.Empty.PadLeft(sizeOfTitle, '*');
-    
-    
+
+
     Console.Clear();
     Console.WriteLine(detailTitle);
     Console.WriteLine(title);
     Console.WriteLine(detailTitle);
     Console.WriteLine();
 }
+
+void EvaluateBand()
 {
-    
 }
 
 ShowMenuOptions();
