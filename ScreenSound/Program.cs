@@ -6,7 +6,7 @@ string messageWelcome = "Welcome to the Screen Sound!";
 
 Dictionary<string, List<int>> bands = new Dictionary<string, List<int>>(StringComparer.InvariantCultureIgnoreCase)
 {
-    { "U2", new List<int>() { 10, 9, 8 } },
+    { "U2", new List<int>() { 10, 9 } },
     { "Kiss", new List<int>() },
     { "Ozzy", new List<int>() { 10, 10, 10, 8, 9 } }
 };
